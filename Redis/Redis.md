@@ -4,7 +4,7 @@ Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存
 
 ## 2、Redis的五个基本类型
 
-```C++
+```sql
 #SET               设置key
 #GET               查看key的值
 #EXPIRE         设置key的过期时间
@@ -153,7 +153,7 @@ fork进程的时候，会需要占用一定的内存空间。
 
 ## 4、Redis的事务处理
 
-```
+```sql
 redis事务处理的基本指令
 MULTI用来组装一个事务；
 EXEC用来执行一个事务；

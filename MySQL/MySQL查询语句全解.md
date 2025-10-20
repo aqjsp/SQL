@@ -4,7 +4,7 @@
 
 #### 1. 基本 `SELECT` 语句
 
-```
+```sql
 SELECT column1, column2 FROM table_name;
 ```
 
@@ -16,7 +16,7 @@ SELECT column1, column2 FROM table_name;
 
 示例
 
-```
+```sql
 SELECT * FROM employees WHERE age > 30;
 ```
 
@@ -33,7 +33,7 @@ SELECT * FROM employees WHERE age > 30;
 
 示例
 
-```
+```sql
 SELECT * FROM products WHERE price <= 100;
 ```
 
@@ -46,13 +46,13 @@ SELECT * FROM products WHERE price <= 100;
 
 示例
 
-```
+```sql
 SELECT * FROM employees WHERE age > 30 AND department = 'HR';
 ```
 
 从 `employees` 表中选择年龄大于 30 且部门为 'HR' 的记录。
 
-```
+```sql
 SELECT * FROM employees WHERE age > 30 OR department = 'HR';
 ```
 
@@ -65,13 +65,13 @@ SELECT * FROM employees WHERE age > 30 OR department = 'HR';
 
 示例
 
-```
+```sql
 SELECT * FROM employees WHERE department IN ('HR', 'IT', 'Finance');
 ```
 
 从 `employees` 表中选择部门为 'HR', 'IT' 或 'Finance' 的记录。
 
-```
+```sql
 SELECT * FROM products WHERE price BETWEEN 50 AND 100;
 ```
 
@@ -86,13 +86,13 @@ SELECT * FROM products WHERE price BETWEEN 50 AND 100;
 
 示例
 
-```
+```sql
 SELECT * FROM employees WHERE name LIKE 'J%';
 ```
 
 从 `employees` 表中选择名称以 'J' 开头的记录。
 
-```
+```sql
 SELECT * FROM employees WHERE name LIKE 'J_n';
 ```
 
@@ -105,13 +105,13 @@ SELECT * FROM employees WHERE name LIKE 'J_n';
 
 示例
 
-```
+```sql
 SELECT * FROM employees WHERE manager_id IS NULL;
 ```
 
 从 `employees` 表中选择 `manager_id` 为 `NULL` 的记录。
 
-```
+```sql
 SELECT * FROM employees WHERE manager_id IS NOT NULL;
 ```
 
@@ -119,7 +119,7 @@ SELECT * FROM employees WHERE manager_id IS NOT NULL;
 
 #### 综合示例
 
-```
+```sql
 SELECT name, department, salary
 FROM employees
 WHERE age > 30 AND department IN ('HR', 'IT');
@@ -135,7 +135,7 @@ WHERE age > 30 AND department IN ('HR', 'IT');
 
 示例
 
-```
+```sql
 SELECT * FROM employees ORDER BY salary;
 ```
 
@@ -147,7 +147,7 @@ SELECT * FROM employees ORDER BY salary;
 
 示例
 
-```
+```sql
 SELECT * FROM employees ORDER BY salary DESC;
 ```
 
@@ -159,7 +159,7 @@ SELECT * FROM employees ORDER BY salary DESC;
 
 示例
 
-```
+```sql
 SELECT * FROM employees ORDER BY department, salary DESC;
 ```
 
@@ -171,7 +171,7 @@ SELECT * FROM employees ORDER BY department, salary DESC;
 
 示例
 
-```
+```sql
 SELECT name, salary AS employee_salary FROM employees ORDER BY employee_salary;
 ```
 
@@ -183,7 +183,7 @@ SELECT name, salary AS employee_salary FROM employees ORDER BY employee_salary;
 
 示例
 
-```
+```sql
 SELECT * FROM employees ORDER BY department ASC, salary DESC;
 ```
 
@@ -195,7 +195,7 @@ SELECT * FROM employees ORDER BY department ASC, salary DESC;
 
 示例
 
-```
+```sql
 SELECT name, salary, salary * 1.1 AS new_salary FROM employees ORDER BY new_salary;
 ```
 
@@ -207,7 +207,7 @@ SELECT name, salary, salary * 1.1 AS new_salary FROM employees ORDER BY new_sala
 
 示例
 
-```
+```sql
 SELECT * FROM employees ORDER BY salary DESC LIMIT 5;
 ```
 
@@ -219,7 +219,7 @@ SELECT * FROM employees ORDER BY salary DESC LIMIT 5;
 
 示例
 
-```
+```sql
 SELECT department, AVG(salary) AS avg_salary FROM employees GROUP BY department ORDER BY avg_salary DESC;
 ```
 
@@ -227,7 +227,7 @@ SELECT department, AVG(salary) AS avg_salary FROM employees GROUP BY department 
 
 #### 综合示例
 
-```
+```sql
 SELECT department, name, salary
 FROM employees
 WHERE age > 30
@@ -244,7 +244,7 @@ ORDER BY department ASC, salary DESC;
 
 示例
 
-```
+```sql
 SELECT COUNT(*) FROM employees;
 ```
 
@@ -256,7 +256,7 @@ SELECT COUNT(*) FROM employees;
 
 示例
 
-```
+```sql
 SELECT SUM(salary) FROM employees;
 ```
 
@@ -268,7 +268,7 @@ SELECT SUM(salary) FROM employees;
 
 示例
 
-```
+```sql
 SELECT AVG(salary) FROM employees;
 ```
 
@@ -280,7 +280,7 @@ SELECT AVG(salary) FROM employees;
 
 示例
 
-```
+```sql
 SELECT MAX(salary) FROM employees;
 ```
 
@@ -292,7 +292,7 @@ SELECT MAX(salary) FROM employees;
 
 示例
 
-```
+```sql
 SELECT MIN(salary) FROM employees;
 ```
 
@@ -304,7 +304,7 @@ SELECT MIN(salary) FROM employees;
 
 示例
 
-```
+```sql
 SELECT department, AVG(salary) 
 FROM employees 
 GROUP BY department;
@@ -318,7 +318,7 @@ GROUP BY department;
 
 示例
 
-```
+```sql
 SELECT department, AVG(salary) 
 FROM employees 
 GROUP BY department 
@@ -329,7 +329,7 @@ HAVING AVG(salary) > 50000;
 
 #### 综合示例
 
-```
+```sql
 SELECT department, COUNT(*), AVG(salary), MAX(salary), MIN(salary) 
 FROM employees 
 GROUP BY department;
@@ -343,7 +343,7 @@ GROUP BY department;
 
 #### 基本语法
 
-```
+```sql
 SELECT column1, column2, ..., aggregate_function(column)
 FROM table_name
 GROUP BY column1, column2, ...;
@@ -353,7 +353,7 @@ GROUP BY column1, column2, ...;
 
 假设有一个名为 `employees` 的表，结构如下：
 
-```
+```sql
 CREATE TABLE employees (
     id INT,
     name VARCHAR(50),
@@ -364,7 +364,7 @@ CREATE TABLE employees (
 
 #### 1. 按部门分组并计算每个部门的员工数量
 
-```
+```sql
 SELECT department, COUNT(*) AS num_employees
 FROM employees
 GROUP BY department;
@@ -372,7 +372,7 @@ GROUP BY department;
 
 输出示例：
 
-```
+```sql
 +------------+---------------+
 | department | num_employees |
 +------------+---------------+
@@ -384,7 +384,7 @@ GROUP BY department;
 
 #### 2. 按部门分组并计算每个部门的平均工资
 
-```
+```sql
 SELECT department, AVG(salary) AS avg_salary
 FROM employees
 GROUP BY department;
@@ -392,7 +392,7 @@ GROUP BY department;
 
 输出示例：
 
-```
+```sql
 +------------+------------+
 | department | avg_salary |
 +------------+------------+
@@ -406,7 +406,7 @@ GROUP BY department;
 
 `HAVING` 子句用于过滤分组后的结果，与 `WHERE` 子句不同的是，`HAVING` 作用于聚合后的结果。
 
-```
+```sql
 SELECT department, AVG(salary) AS avg_salary
 FROM employees
 GROUP BY department
@@ -415,7 +415,7 @@ HAVING AVG(salary) > 55000;
 
 输出示例：
 
-```
+```sql
 +------------+------------+
 | department | avg_salary |
 +------------+------------+
@@ -428,7 +428,7 @@ HAVING AVG(salary) > 55000;
 
 您可以根据多个列进行分组。
 
-```
+```sql
 SELECT department, name, SUM(salary) AS total_salary
 FROM employees
 GROUP BY department, name;
@@ -436,7 +436,7 @@ GROUP BY department, name;
 
 输出示例：
 
-```
+```sql
 +------------+---------+--------------+
 | department | name    | total_salary |
 +------------+---------+--------------+
@@ -461,7 +461,7 @@ GROUP BY department, name;
 
 内连接返回两个表中满足连接条件的交集记录。
 
-```
+```sql
 SELECT a.column1, b.column2
 FROM table1 a
 INNER JOIN table2 b
@@ -470,7 +470,7 @@ ON a.common_column = b.common_column;
 
 示例：
 
-```
+```sql
 SELECT employees.name, departments.department_name
 FROM employees
 INNER JOIN departments
@@ -481,7 +481,7 @@ ON employees.department_id = departments.id;
 
 左连接返回左表的所有记录及右表中满足连接条件的记录，没有匹配的记录则结果中包含NULL。
 
-```
+```sql
 SELECT a.column1, b.column2
 FROM table1 a
 LEFT JOIN table2 b
@@ -490,7 +490,7 @@ ON a.common_column = b.common_column;
 
 示例：
 
-```
+```sql
 SELECT employees.name, departments.department_name
 FROM employees
 LEFT JOIN departments
@@ -501,7 +501,7 @@ ON employees.department_id = departments.id;
 
 右连接返回右表的所有记录及左表中满足连接条件的记录，没有匹配的记录则结果中包含NULL。
 
-```
+```sql
 SELECT a.column1, b.column2
 FROM table1 a
 RIGHT JOIN table2 b
@@ -510,7 +510,7 @@ ON a.common_column = b.common_column;
 
 示例：
 
-```
+```sql
 SELECT employees.name, departments.department_name
 FROM employees
 RIGHT JOIN departments
@@ -521,7 +521,7 @@ ON employees.department_id = departments.id;
 
 全连接返回左右表中所有记录，无论是否满足连接条件，不支持在MySQL中，可以通过左连接和右连接的联合实现。
 
-```
+```sql
 SELECT a.column1, b.column2
 FROM table1 a
 LEFT JOIN table2 b
@@ -535,7 +535,7 @@ ON a.common_column = b.common_column;
 
 示例：
 
-```
+```sql
 SELECT employees.name, departments.department_name
 FROM employees
 LEFT JOIN departments
@@ -551,7 +551,7 @@ ON employees.department_id = departments.id;
 
 自连接是指一个表与自身的连接，常用于树状数据结构的查询。
 
-```
+```sql
 SELECT a.column1, b.column2
 FROM table1 a
 INNER JOIN table1 b
@@ -560,7 +560,7 @@ ON a.common_column = b.common_column;
 
 示例：
 
-```
+```sql
 SELECT e1.name AS employee, e2.name AS manager
 FROM employees e1
 INNER JOIN employees e2
@@ -571,7 +571,7 @@ ON e1.manager_id = e2.id;
 
 交叉连接返回两个表的笛卡尔积，即所有可能的记录组合。
 
-```
+```sql
 SELECT a.column1, b.column2
 FROM table1 a
 CROSS JOIN table2 b;
@@ -579,7 +579,7 @@ CROSS JOIN table2 b;
 
 示例：
 
-```
+```sql
 SELECT employees.name, departments.department_name
 FROM employees
 CROSS JOIN departments;
@@ -591,7 +591,7 @@ MySQL 子查询是指在另一个 SQL 语句中嵌套的查询，通常用于复
 
 #### 1. 在 SELECT 语句中的子查询
 
-```
+```sql
 SELECT column1
 FROM table1
 WHERE column2 = (SELECT column2 FROM table2 WHERE condition);
@@ -599,7 +599,7 @@ WHERE column2 = (SELECT column2 FROM table2 WHERE condition);
 
 示例：
 
-```
+```sql
 SELECT name
 FROM employees
 WHERE department_id = (SELECT id FROM departments WHERE name = 'Sales');
@@ -611,7 +611,7 @@ WHERE department_id = (SELECT id FROM departments WHERE name = 'Sales');
 
 子查询作为临时表使用：
 
-```
+```sql
 SELECT a.column1, b.column2
 FROM (SELECT column1, column2 FROM table1) a
 JOIN table2 b ON a.column1 = b.column1;
@@ -619,7 +619,7 @@ JOIN table2 b ON a.column1 = b.column1;
 
 示例：
 
-```
+```sql
 SELECT dept_employee.name, department.total_sales
 FROM (SELECT id, name FROM employees) AS dept_employee
 JOIN (SELECT department_id, SUM(sales) AS total_sales FROM sales GROUP BY department_id) AS department
@@ -628,7 +628,7 @@ ON dept_employee.id = department.department_id;
 
 #### 3. 在 HAVING 子句中的子查询
 
-```
+```sql
 SELECT column1, SUM(column2)
 FROM table1
 GROUP BY column1
@@ -637,7 +637,7 @@ HAVING SUM(column2) > (SELECT AVG(column2) FROM table1);
 
 示例：
 
-```
+```sql
 SELECT department_id, SUM(salary)
 FROM employees
 GROUP BY department_id
@@ -648,7 +648,7 @@ HAVING SUM(salary) > (SELECT AVG(salary) FROM employees);
 
 #### 4. 在 UPDATE 语句中的子查询
 
-```
+```sql
 UPDATE table1
 SET column1 = (SELECT expression FROM table2 WHERE condition)
 WHERE condition;
@@ -656,7 +656,7 @@ WHERE condition;
 
 示例：
 
-```
+```sql
 UPDATE employees
 SET salary = (SELECT AVG(salary) FROM employees)
 WHERE department_id = 1;
@@ -666,14 +666,14 @@ WHERE department_id = 1;
 
 #### 5. 在 DELETE 语句中的子查询
 
-```
+```sql
 DELETE FROM table1
 WHERE column1 = (SELECT column1 FROM table2 WHERE condition);
 ```
 
 示例：
 
-```
+```sql
 DELETE FROM employees
 WHERE department_id = (SELECT id FROM departments WHERE name = 'HR');
 ```
@@ -684,7 +684,7 @@ WHERE department_id = (SELECT id FROM departments WHERE name = 'HR');
 
 相关子查询依赖于外部查询中的数据：
 
-```
+```sql
 SELECT column1
 FROM table1
 WHERE EXISTS (SELECT 1 FROM table2 WHERE table1.column2 = table2.column2);
@@ -692,7 +692,7 @@ WHERE EXISTS (SELECT 1 FROM table2 WHERE table1.column2 = table2.column2);
 
 示例：
 
-```
+```sql
 SELECT e.name
 FROM employees e
 WHERE EXISTS (SELECT 1 FROM departments d WHERE e.department_id = d.id AND d.name = 'HR');
